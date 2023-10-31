@@ -1,113 +1,291 @@
-import Image from 'next/image'
+"use client";
+
+import Image from "next/image";
+import { motion, useInView } from "framer-motion";
+
+import Agency from "@/images/Foto-2.png";
+import IES from "@/images/ies.png";
+import Photo3 from '@/images/Foto-3.png'
+import Photo4 from '@/images/Foto-4.png'
+
+import { listLaborField, listRegistrationReq, listStudyPlan } from "@/utils";
+
+const defaulAnimation = {
+  hidden: {
+    opacity: 0,
+    y: -20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+  show: {
+    y: 0,
+    x: 0,
+    opacity: 1,
+  },
+};
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="container mx-auto">
+      {/* Que Son Las TICs */}
+      <div className="my-8">
+        <motion.h3
+          variants={defaulAnimation}
+          initial="hidden"
+          whileInView={"show"}
+          transition={{
+            type: "tween",
+            delay: 0.6,
+          }}
+          viewport={{ once: true, amount: 0.7 }}
+          className="font-dm-serif-desplay text-center py-2 text-xl lg:text-2xl"
+        >
+          ¿Que Son Las TICs?
+        </motion.h3>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="text-center flex items-center px-4">
+            <motion.p
+              variants={defaulAnimation}
+              initial="hidden"
+              whileInView={"show"}
+              transition={{
+                type: "tween",
+                delay: 0.7,
+              }}
+              viewport={{ once: true, amount: 0.7 }}
+              className="font-montserrat text-sm pb-8 lg:text-base"
+            >
+              Las TICs, o Tecnologías de la Información y la Comunicación, son
+              herramientas utilizamos para obtener, procesar, comunicar
+              información utilizando la tecnología, como. Estas tecnologías son
+              fundamentales en la era digital para la educación y la
+              comunicación.
+            </motion.p>
+          </div>
+          <div className="flex items-center justify-center ">
+            <motion.div
+              variants={defaulAnimation}
+              initial="hidden"
+              whileInView={"show"}
+              transition={{
+                type: "tween",
+                delay: 1,
+              }}
+              viewport={{ once: true, amount: 0.1 }}
+            >
+              <Image
+                className="w-[300px] md:w-[380px] lg:w-[420px] xl:w-[480px]"
+                src={Agency}
+                alt="Nothing"
+              />
+            </motion.div>
+          </div>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      {/* Cual Es El Campo Laboral */}
+      <div className="my-12">
+        <motion.h3
+          variants={defaulAnimation}
+          initial="hidden"
+          whileInView={"show"}
+          transition={{
+            type: "tween",
+            delay: 0.1,
+          }}
+          viewport={{ once: true, amount: 0.7 }}
+          className="font-dm-serif-desplay text-center py-2 text-xl lg:text-2xl"
+        >
+          ¿Cual Es El Campo Laboral?
+        </motion.h3>
+        <div className="grid grid-cols-1">
+          <div className="flex flex-col md:flex-row flex-wrap justify-center">
+            {listLaborField.map((item, index) => (
+              <motion.div
+                key={index}
+                variants={defaulAnimation}
+                initial="hidden"
+                whileInView={"show"}
+                transition={{
+                  type: "tween",
+                  delay: 0.1 + index / 10,
+                }}
+                viewport={{ once: true, amount: 0.7 }}
+                className="border mx-4 my-2 border-neutral-600 rounded-md flex items-center justify-center md:m-2"
+              >
+                <p className="font-montserrat text-sm py-4 md:px-4 lg:text-base">
+                  {item.name}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+      {/* Plan De Estudio */}
+      <div className="my-8">
+        <motion.h3
+          variants={defaulAnimation}
+          initial="hidden"
+          whileInView={"show"}
+          transition={{
+            type: "tween",
+            delay: 0.1,
+          }}
+          viewport={{ once: true, amount: 0.7 }}
+          className="font-dm-serif-desplay text-center py-2 text-xl lg:text-2xl"
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+          Plan De Estudio
+        </motion.h3>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="flex flex-col md:justify-center pb-8">
+            {listStudyPlan.map((item, index) => (
+              <motion.div
+                key={index}
+                variants={defaulAnimation}
+                initial="hidden"
+                whileInView={"show"}
+                transition={{
+                  type: "tween",
+                  delay: 0.1 + index / 10,
+                }}
+                viewport={{ once: true, amount: 0.7 }}
+                className="border mx-4 my-2 border-neutral-600 rounded-md flex items-center justify-center md:m-2"
+              >
+                <p className="font-montserrat py-4 text-sm lg:text-base">
+                  {item.name}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+          <div className="flex items-center justify-center ">
+            <motion.div
+              variants={defaulAnimation}
+              initial="hidden"
+              whileInView={"show"}
+              transition={{
+                type: "tween",
+                delay: 0.3,
+              }}
+              viewport={{ once: true, amount: 0.7 }}
+            >
+              <Image
+                className="w-[300px] md:w-[380px] lg:w-[420px] xl:w-[480px]"
+                src={Photo3}
+                alt="Dos manos concetado dos parte de un rompe cabeza"
+              />
+            </motion.div>
+          </div>
+        </div>
       </div>
-    </main>
-  )
+      {/* Requisitvos De Inscripcion */}
+      <div className="my-8">
+        <motion.h3
+          variants={defaulAnimation}
+          initial="hidden"
+          whileInView={"show"}
+          transition={{
+            type: "tween",
+            delay: 0.1,
+          }}
+          viewport={{ once: true, amount: 0.7 }}
+          className="font-dm-serif-desplay text-center py-2 text-xl lg:text-2xl"
+        >
+          Requisitvos De Inscripcion
+        </motion.h3>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="flex items-center justify-center text-center pb-8">
+            <motion.div
+              variants={defaulAnimation}
+              initial="hidden"
+              whileInView={"show"}
+              transition={{
+                type: "tween",
+                delay: 0.2,
+              }}
+              viewport={{ once: true, amount: 0.7 }}
+            >
+              {listRegistrationReq.map((item, index) => (
+                <p
+                  className="font-montserrat text-sm lg:text-base hover:tracking-widest ease-in-out duration-300"
+                  key={index}
+                >
+                  {item.name}
+                </p>
+              ))}
+            </motion.div>
+          </div>
+          <div className="flex items-center justify-center ">
+            <motion.div
+              variants={defaulAnimation}
+              initial="hidden"
+              whileInView={"show"}
+              transition={{
+                type: "tween",
+                delay: 0.3,
+              }}
+              viewport={{ once: true, amount: 0.7 }}
+            >
+              <Image
+                className="w-[280px] md:w-[340px] lg:w-[380px] xl:w-[420px]"
+                src={Photo4}
+                alt="Dos manos concetado dos parte de un rompe cabeza"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </div>
+      {/* Pagina Oficial Del IES */}
+      <div className="my-8">
+        <motion.h3
+          variants={defaulAnimation}
+          initial="hidden"
+          whileInView={"show"}
+          transition={{
+            type: "tween",
+            delay: 0.1,
+          }}
+          viewport={{ once: true, amount: 0.7 }}
+          className="font-dm-serif-desplay text-center py-2 text-xl lg:text-2xl"
+        >
+          Requisitvos De Inscripcion
+        </motion.h3>
+        <div className="grid grid-cols-1">
+          <motion.div
+            variants={defaulAnimation}
+            initial="hidden"
+            whileInView={"show"}
+            transition={{
+              type: "tween",
+              delay: 0.2,
+            }}
+            viewport={{ once: true, amount: 0.7 }}
+            className="text-center lg:text-base"
+          >
+            <p className="font-montserrat text-sm px-4 lg:text-base pb-8">
+              Ingrese A La Pagina Oficial Del IES N°6 Para Enterarse De Las
+              Novedades Sobre Las Incripciones
+            </p>
+          </motion.div>
+          <motion.div
+            variants={defaulAnimation}
+            initial="hidden"
+            whileInView={"show"}
+            transition={{
+              type: "tween",
+              delay: 0.3,
+            }}
+            viewport={{ once: true, amount: 0.7 }}
+            className="flex items-center justify-center "
+          >
+            <Image
+              className="w-[300px] md:w-[380px] lg:w-[420px] xl:w-[480px]"
+              src={IES}
+              alt="Dos manos concetado dos parte de un rompe cabeza"
+            />
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
 }
