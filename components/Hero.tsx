@@ -66,7 +66,7 @@ export const Hero = () => {
             animate="visible"
             variants={standarAnimation}
             transition={{ delay: 0.3, ease: "easeInOut", duration: 0.3 }}
-            className="font-dm-serif-desplay text-3xl md:text-2xl"
+            className="font-dm-serif-desplay text-2xl md:text-3xl"
           >
             Las TICs son{" "}
             <motion.span
